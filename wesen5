@@ -47,15 +47,32 @@ public class CreatureFive {
       	public void buttonReleased(Button b) {}
     	});
 	}
-
+	
+	public static void normalMovement() {
+		speed[LEFT] = batteryVoltage;
+		speed[RIGHT] = batteryVoltage;
+	}
+	
 	public static void setSpeed() {
 					
 		if(toggle == 0) { 
 		  // Creature type 4a
-		  
+		  //Colorsensor Threshold red or green activates Soundsensor with 15% and Lightsensor with 40%
+		  if(colorIntensity == 0 || colorIntensity == 2) {
+		  	speed[LEFT] = 0;
+		  	speed[RIGHT] = 0;
+		  	if(lightIntensity[LEFT] >= 40 & lightIntensity[RIGHT] >= 40 & soundIntensity >= 15) {
+		  		speed[LEFT] = lightIntensity[Left] * batteryVoltage;
+		  		speed[RIGHT] = lightIntensity[RIGHT] * batteryVoltage;
+		  	}
+		  }
+		  else {
+		  	normalMovement();
+		  }
 		} 
 		else if(toggle == 1) {
 		  // Creature type 4b
+		  //Activates motor if 
 		  
 		}
 		else { 
